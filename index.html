@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicativo Mobile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <!-- Tela de login do sistema -->
+
+    <!-- Cabeçário -->
+    <header class="cabecario">
+        <h1>TCC-Osni</h1>
+    </header>
+    <!-- End cabeçário -->
+
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+        <section class="conteudo">
+            <!-- Criação do formulário -->
+            <form class="form-login">
+                <div class="campo-email">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email" placeholder="Digite seu email" required>
+                </div>
+                <div class="campo-senha">
+                    <label for="senha">Senha: </label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="entrar">
+                    <button type="submit" class="btn-entrar">Entrar</button>
+                </div>
+            </form>
+            <!-- End criação do formulário -->
+
+            <!-- links para outras telas -->
+            <div>
+                <a href="recuperar_senha.html">Esqueceu sua senha?</a>
+            </div>
+            <div>
+                <a href="cadastro.html">Não possui conta? Crie uma agora!</a>
+            </div>
+            <!-- End links para outras telas -->
+        </section>
+    </main>
+    <!-- End conteúdo principal -->
+    <!-- End tela de login do sistema -->
+
+    <!-- Conteúdo JavaScript -->
+    <script src="index.js"></script>
+</body>
+</html>
