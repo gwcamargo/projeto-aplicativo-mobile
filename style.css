@@ -20,7 +20,7 @@ header > h1 {
     gap: 1rem;
 }
 
-.campo-email input {
+.campo-email > input {
     border: none;
     outline: none;
     border-bottom: 1px solid black;
@@ -47,6 +47,9 @@ header > h1 {
 
     color: white;
     font-size: 1em;
+    font-weight: bold;
+
+    cursor: pointer;
 }
 
 .recuperar-senha a {
@@ -61,3 +64,92 @@ header > h1 {
 
 /* estilização do cadastro.html (tela de cadastro) */
 
+.campo-nome {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.campo-nome > input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.campo-email {
+    margin-top: 1rem;
+}
+
+.campo-telefone {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.campo-telefone > input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.campo-cpf {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.campo-cpf > input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.confirm-password {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.confirm-password > input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.type-of-user {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.type-of-user > #tipo-usuario {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.btn-registrar > button {
+    margin-top: 1rem;
+    height: 40px;
+    width: 20rem;
+
+    background-color: lightgray;
+    color: black;
+    border: none;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-voltar > button {
+    margin-top: 0.5rem;
+    height: 40px;
+    width: 20rem;
+
+    background-color: lightgray;
+    color: black;
+    border: none;
+
+    font-weight: bold;
+    cursor: pointer;
+}
