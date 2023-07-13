@@ -8,7 +8,7 @@
 </head>
 <body> 
     <!-- Tela de login do sistema -->
-
+    
     <!-- Cabeçário -->
     <header class="cabecario">
         <h1>TCC-Osni</h1>
@@ -17,34 +17,39 @@
 
     <!-- Conteúdo principal -->
     <main class="conteudo-principal">
-        <section class="conteudo">
-            <!-- Criação do formulário -->
-            <form class="form-login">
-                <div class="campo-email">
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id="email" placeholder="Digite seu email" required>
-                </div>
-                <div class="campo-senha">
-                    <label for="senha">Senha: </label>
-                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
-                </div>
-                <div class="entrar">
-                    <button type="submit" class="btn-entrar">Entrar</button>
-                </div>
-            </form>
-            <!-- End criação do formulário -->
+        <!-- Criação do formulário -->
+        <form class="form-login">
+            <div class="campo-email">
+                <div class="label-email"><label for="email">Email: </label></div>
 
-            <!-- links para outras telas -->
-            <div>
-                <a href="recuperar_senha.html">Esqueceu sua senha?</a>
+                <input type="email" name="email" id="email" placeholder="Digite seu email" required>
             </div>
-            <div>
-                <a href="cadastro.html">Não possui conta? Crie uma agora!</a>
+
+            <div class="campo-senha">
+                <div class="label-senha"><label for="senha">Senha: </label></div>
+
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
             </div>
-            <!-- End links para outras telas -->
-        </section>
+
+            <div class="entrar">
+                <button type="submit" class="btn-entrar">ENTRAR</button>
+            </div>
+        </form>
+        <!-- End criação do formulário -->
+
+        <!-- links para outras telas -->
+        <p class="recuperar-senha">
+            <a href="recuperar_senha.html" target="_blank">Esqueceu sua senha?</a>
+        </p>
+        
+        <p class="cadastro">
+            <a href="cadastro.html" target="_blank">Não possui conta? Crie uma agora!</a>
+        </p>
+        <!-- End links para outras telas -->
+
     </main>
     <!-- End conteúdo principal -->
+
     <!-- End tela de login do sistema -->
 
     <!-- Conteúdo JavaScript -->

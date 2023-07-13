@@ -13,54 +13,62 @@
     <header>
         <h1>TCC-Osni</h1>
     </header>
+
     <!-- End cabeçario -->
 
     <!-- Conteudo principal -->
-    <main>
-        <section>
-            <!-- Criação do formulario -->
-            <form>
-                <div>
-                    <label for="nome">Nome Completo: </label>
-                    <input type="text" name="nome" id="nome" placeholder="Insira seu nome" required>
-                </div> 
-                <div>
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id="email" placeholder="Insira seu email" required>
-                </div>
-                <div>
-                    <label for="telefone">Telefone: </label>
-                    <input type="tel" name="telefone" id="telefone" placeholder="Insira seu telefone" required>
-                </div>
-                <div>
-                    <label for="cpf">CPF: </label>
-                    <input type="number" name="cpf" id="cpf" placeholder="Insira seu CPF" required>
-                </div>
-                <div>
-                    <label for="senha">Senha: </label>
-                    <input type="password" name="senha" id="senha" placeholder="Insira sua nova senha" required>
-                </div>
-                <div>
-                    <label for="confirmar-senha">Confirmar Senha:</label>
-                    <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="confirme sua senha" required>
-                </div>
-                <div>
-                    <label for="tipo-usuario">Tipo de Usuário: </label>
-                    <select name="tipo-usuario" id="tipo-usuario">
-                        <option value="normal">Usuario Normal</option>
-                        <option value="intermediario">Usuario Intermediario</option>
-                        <option value="administrador">Usuario Administrador</option>
-                    </select>
-                </div>
-                <div>
-                    <button>Registrar</button>
-                </div>
-                <div>
-                    <button>Voltar</button>
-                </div>
-            </form>
-            <!-- End criação do formulario -->
-        </section>
+    <main class="conteudo-principal">
+        
+        <!-- Criação do formulario -->
+        <form class="form-cadastro">
+            <div class="campo-nome">
+                <div class="label-nome"><label for="nome">Nome Completo: </label></div>
+                <input type="text" name="nome" id="nome" placeholder="Insira seu nome" required>
+            </div>
+
+            <div class="campo-email">
+                <div class="label-email"><label for="email">Email: </label></div>
+                <input type="email" name="email" id="email" placeholder="Insira seu email" required>
+            </div>
+
+            <div class="campo-telefone">
+                <div class="label-telefone"><label for="telefone">Telefone: </label></div>
+                <input type="tel" name="telefone" id="telefone" placeholder="Insira seu telefone" required>
+            </div>
+
+            <div class="campo-cpf">
+                <div class="label-cpf"><label for="cpf">CPF: </label></div>
+                <input type="number" name="cpf" id="cpf" placeholder="Insira seu CPF" required>
+            </div>
+
+             <div class="campo-senha">
+                <div class="label-senha"><label for="senha">Senha: </label></div>
+                <input type="password" name="senha" id="senha" placeholder="Insira sua nova senha" required>
+            </div>
+
+            <div class="confirm-password">
+                <div class="label-confirm-password"><label for="confirmar-senha">Confirmar Senha:</label></div>
+                <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="confirme sua senha" required>
+            </div>
+
+            <div class="type-of-user">
+                <div class="label-type-of-user"><label for="tipo-usuario">Tipo de Usuário: </label></div>
+                <select name="tipo-usuario" id="tipo-usuario">
+                    <option value="normal">Usuario Normal</option>
+                    <option value="intermediario">Usuario Intermediario</option>
+                    <option value="administrador">Usuario Administrador</option>
+                </select>
+            </div>
+
+            <div class="btn-registrar">
+                <button>REGISTRAR</button>
+            </div>
+
+            <div class="btn-voltar">
+                <button>VOLTAR</button>
+            </div>
+        </form>
+        <!-- End criação do formulario -->
     </main>
     <!-- End conteudo principal -->
     <!-- End tela de cadastro -->

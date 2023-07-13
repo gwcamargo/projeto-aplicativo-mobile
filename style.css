@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* estilização do index.html (tela de login) */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: rgb(44, 85, 181);
+    color: white;
+}
+
+header > h1 {
+    padding: 15px;
+}
+
+.campo-senha {
+    margin-top: 0.5rem;
+    gap: 1rem;
+}
+
+.campo-email input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    width: 20rem;
+}
+
+.campo-senha > input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    width: 20rem;
+}
+
+.entrar .btn-entrar {
+    margin-top: 1rem;
+    background-color: rgb(69, 146, 176);
+    height: 50px;
+
+    width: 20rem;
+    border: none;
+    border-radius: 40px;
+
+    color: white;
+    font-size: 1em;
+}
+
+.recuperar-senha a {
+    text-decoration: none;
+    color: gray;    
+}
+
+.cadastro a {
+    text-decoration: none;
+    color: black;
+}
+
+/* estilização do cadastro.html (tela de cadastro) */
+
