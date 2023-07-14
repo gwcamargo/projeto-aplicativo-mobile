@@ -52,14 +52,22 @@ header > h1 {
     cursor: pointer;
 }
 
-.recuperar-senha a {
+.recuperar-senha > a {
     text-decoration: none;
     color: gray;    
 }
 
-.cadastro a {
+.cadastro > a {
     text-decoration: none;
     color: black;
+}
+
+.recuperar-senha > a:hover {
+    border-bottom: 1px solid gray;
+}
+
+.cadastro > a:hover {
+    border-bottom: 1px solid black;
 }
 
 /* estilização do cadastro.html (tela de cadastro) */
@@ -71,13 +79,35 @@ header > h1 {
 
 .campo-nome > input {
     border: none;
+    outline: none;
     border-bottom: 1px solid black;
     width: 20rem;
     height: 30px;
 }
 
-.campo-email {
+.user-email {
     margin-top: 1rem;
+}
+
+.user-email > input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
+}
+
+.user-senha {
+    margin-top: 0.5rem;
+    gap: 1rem;
+}
+
+.user-senha > input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    height: 30px;
 }
 
 .campo-telefone {
@@ -87,6 +117,7 @@ header > h1 {
 
 .campo-telefone > input {
     border: none;
+    outline: none;
     border-bottom: 1px solid black;
     width: 20rem;
     height: 30px;
@@ -99,6 +130,7 @@ header > h1 {
 
 .campo-cpf > input {
     border: none;
+    outline: none;
     border-bottom: 1px solid black;
     width: 20rem;
     height: 30px;
@@ -111,6 +143,7 @@ header > h1 {
 
 .confirm-password > input {
     border: none;
+    outline: none;
     border-bottom: 1px solid black;
     width: 20rem;
     height: 30px;
@@ -123,6 +156,7 @@ header > h1 {
 
 .type-of-user > #tipo-usuario {
     border: none;
+    outline: none;
     border-bottom: 1px solid black;
     width: 20rem;
     height: 30px;
@@ -152,4 +186,51 @@ header > h1 {
 
     font-weight: bold;
     cursor: pointer;
+}
+
+/* estilização de recuperar_senha.html (tela de recuperar senha) */
+
+.input-email {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.input-email > #email {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(87, 87, 223);
+    width: 20rem;
+    height: 25px;
+}
+
+.btn-cancelar {
+    margin-top: 1rem;
+    gap: 1rem;
+    border: none;
+
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+
+    background-color: white;
+}
+
+.btn-recuperar {
+    border: none;
+    gap: 1rem;
+    color: blue;
+
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+
+    background-color: white;
+}
+
+.btn-cancelar:hover {
+    border-bottom: 1px solid blue;
+}
+
+.btn-recuperar:hover {
+    border-bottom: 1px solid blue;
 }
