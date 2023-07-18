@@ -20,15 +20,12 @@
         }
 
         // verificar se o email está preenchido e se é válido
-        if (email.value === "" || !validarEmail(email.value)) {
+        if (email.value === "" || !validateEmail(email.value)) {
             alert("Por favor, digite seu email")
             return
-        }
+        }   
 
-        // verificar se o telefone está vazio
-        if (telefone.value === "") {
-            alert("Por favor, preencha seu telefone")
-        }
+        if (telefone.value === )
 
         // se todos os campos estiverem corretamente preenchidos, envie o form
         form_cadastro.submit()
