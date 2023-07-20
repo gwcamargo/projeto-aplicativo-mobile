@@ -4,9 +4,11 @@
     const form_cadastro = document.querySelector(".form-cadastro")
     const nome = document.querySelector("#nome")
     const email = document.querySelector("#iemail")
+
     const telefone = document.querySelector("#telefone")
     const cpf = document.querySelector("#cpf")
     const senha = document.querySelector("#isenha")
+    
     const confirm_password = document.querySelector("#confirmar-senha")
     const tipo_usuario = document.querySelector("#tipo-usuario")
 
@@ -27,16 +29,20 @@
         
         // verificar se o telefone está preenchido corretamente e se é válido
         if (telefone.value === "" || !validarTelefone(telefone.value)) {
-            alert("Número inválido, tente novamente")
+            alert("Por favor, digite o seu número de telefone")
             return
         }
 
-        // verificar se o CPF está preenchido corretamente e se é válido
-        if (cpf.value === "" || !isValidCpf(cpf.value)) {
-            alert("Por favor, digite o cpf corretamente")
+        if (cpf.value === "" || !isValidCPF(cpf.value)) {
+            alert("Por favor, digite seu CPF")
             return
         }
 
+        if (senha.value === "" || !isValidPassword(senha.value, 8)) {
+            alert("Sua senha deve ter no mínimo 8 caracteres")
+            return
+        }
+        
         // se todos os campos estiverem corretamente preenchidos, envie o form
         form_cadastro.submit()
     })
@@ -54,11 +60,12 @@
             return false
         }
     }
+
     // função para validar telefone
     function validarTelefone(telefone) {
         // criar uma regex para validar telefone
         const telRegex = new RegExp(
-            /^([14689][0-9]|2[12478]|3([1-5]|[7-8])|5([13-5])|7[193-7])9[0-9]{8}$/
+            /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
         )
 
         if (telRegex.test(telefone)) {
@@ -68,11 +75,10 @@
         }
     }
 
-    // função para validar cpf
-    function isValidCpf(cpf) {
-        // criar uma regex para validar cpf
+    // função para validar CPF
+    function isValidCPF(cpf) {
         const cpfRegex = new RegExp(
-            /^([0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2})/
+           /^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$/
         )
 
         if (cpfRegex.test(cpf)) {
@@ -80,4 +86,13 @@
         } else {
             return false
         }
+    }
+
+    // função para validar a nova senha
+    function isValidPassword(password, minDigits) {
+        if (password.length >= minDigits) {
+            return true
+        } else {
+            return false
+        } 
     }
