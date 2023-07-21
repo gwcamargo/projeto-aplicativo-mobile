@@ -33,13 +33,27 @@
             return
         }
 
-        if (cpf.value === "" || !isValidCPF(cpf.value)) {
-            alert("Por favor, digite seu CPF")
+        // verificar se o cpf está preenchido corretamente e se é válido
+        if (cpf.value === "") {
+            alert("Por favor, insira seu CPF!")
+            return
+        } else if (!isValidCPF(cpf.value)) {
+            alert("CPF inválido, tente novamente!")
             return
         }
 
+        // verificar se a senha está preenchida corretamente e se é válido
         if (senha.value === "" || !isValidPassword(senha.value, 8)) {
             alert("Sua senha deve ter no mínimo 8 caracteres")
+            return
+        }
+
+        // verificar se a senha não é diferente da anterior e se está preenchida
+        if (confirm_password.value === "") {
+            alert("Por favor, confirme sua senha!")
+            return
+        } else if (confirm_password.value !== senha.value) {
+            alert("Sua senha é diferente!")
             return
         }
         
