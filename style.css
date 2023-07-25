@@ -383,3 +383,44 @@ header > h1 {
     color: white;
     cursor: pointer;
 }
+
+/* estilização de atualizar-email.html */
+
+#atualiza-email {
+    border: none;
+    border-bottom: 1px solid blue;
+    height: 2rem;
+
+    outline: none;
+    width: 20rem;
+}
+
+.btn-reset {
+    border: none;
+    background-color: white;
+    font-weight: bold;
+
+    color: blue;
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+    cursor: pointer;
+}
+
+.btn-reset:hover {
+    border-bottom: 1px solid blue;
+}
+
+.btn-cancel {
+    border: none;
+    background-color: white;
+    font-weight: bold;
+
+    color: blue;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    border-bottom: 1px solid blue;
+}
