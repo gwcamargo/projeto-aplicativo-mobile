@@ -289,6 +289,12 @@ header > h1 {
     align-items: center;
 }
 
+.btn-verificar:hover {
+    cursor: pointer;
+    background: darkgray;
+    color: white;
+}
+
 .btn-logout {
     background-color: lightgray;
     font-weight: bold;
@@ -306,6 +312,11 @@ header > h1 {
     align-items: center;
 }
 
+.btn-logout:hover {
+    cursor: pointer;
+    background-color: darkgray;
+    color: white;
+}
 
 .btn-salvar-localizacao {
     background-color: lightgray;
@@ -322,4 +333,10 @@ header > h1 {
 
     justify-content: center;
     align-items: center;
+}
+
+.btn-salvar-localizacao:hover {
+    cursor: pointer;
+    background-color: darkgray;
+    color: white;
 }
