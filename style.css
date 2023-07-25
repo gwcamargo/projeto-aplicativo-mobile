@@ -340,3 +340,46 @@ header > h1 {
     background-color: darkgray;
     color: white;
 }
+
+/* estilização da redefinir-senha.html */
+
+#redefinir-senha {
+    border: none;
+    border-bottom: 1px solid blue;
+    width: 25rem;
+
+    height: 2rem;
+    outline: none;
+}
+
+#confirme-sua-senha {
+    border: none;
+    border-bottom: 1px solid blue;
+    width: 25rem;
+
+    height: 2rem;
+    outline: none;
+}
+
+.container-confirma-senha {
+    margin-top: 1rem;
+}
+
+.container-button {
+    margin-top: 1rem;
+}
+
+.btn-salvar-senha {
+    border: none;
+    height: 2rem;
+    font-weight: bold;
+
+    background: lightgray;
+    width: 25rem;
+}
+
+.btn-salvar-senha:hover {
+    background-color: darkgray;
+    color: white;
+    cursor: pointer;
+}
