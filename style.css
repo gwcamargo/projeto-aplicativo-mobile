@@ -266,3 +266,60 @@ header > h1 {
     height: 25px;
     width: 16rem;
 }
+
+/* estilização da tela-principal.html */
+
+.msg-verificar-email {
+    color: rgb(127, 127, 127);
+}
+
+.btn-verificar {
+    background-color: lightgray;
+    font-weight: bold;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    height: 2rem;
+
+    padding: 0.5rem;
+    width: 25rem;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.btn-logout {
+    background-color: lightgray;
+    font-weight: bold;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rem;
+
+    height: 2rem;
+    padding: 0.5rem;
+    width: 25rem;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-salvar-localizacao {
+    background-color: lightgray;
+    font-weight: bold;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    height: 2rem;
+    padding: 0.5rem;
+    width: 25rem;
+
+    justify-content: center;
+    align-items: center;
+}
