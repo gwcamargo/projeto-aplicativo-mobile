@@ -4,6 +4,7 @@
 
 * {
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 header {
@@ -173,6 +174,12 @@ header > h1 {
 
     font-weight: bold;
     cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.btn-registrar > button:hover {
+    background-color: darkgray;
+    color: white;
 }
 
 .btn-voltar > button {
@@ -186,6 +193,12 @@ header > h1 {
 
     font-weight: bold;
     cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.btn-voltar > button:hover {
+    background-color: darkgray;
+    color: white;
 }
 
 /* estilização de recuperar_senha.html (tela de recuperar senha) */
@@ -253,6 +266,8 @@ header > h1 {
     padding: 10px;
     font-size: 1rem;
     cursor: pointer;
+
+    transition-duration: 0.5s;
 }
 
 .btn-salvar:hover {
@@ -287,6 +302,7 @@ header > h1 {
     justify-content: center;
 
     align-items: center;
+    transition-duration: 0.5s;
 }
 
 .btn-verificar:hover {
@@ -302,7 +318,7 @@ header > h1 {
 
     display: flex;
     flex-direction: column;
-    margin-top: 20rem;
+    margin-top: 1rem;
 
     height: 2rem;
     padding: 0.5rem;
@@ -310,6 +326,7 @@ header > h1 {
 
     justify-content: center;
     align-items: center;
+    transition-duration: 0.5s;
 }
 
 .btn-logout:hover {
@@ -333,12 +350,18 @@ header > h1 {
 
     justify-content: center;
     align-items: center;
+    transition-duration: 0.5s;
 }
 
 .btn-salvar-localizacao:hover {
     cursor: pointer;
     background-color: darkgray;
     color: white;
+}
+
+.mapBox {
+    margin-top: 1rem;
+    position: relative;
 }
 
 /* estilização da redefinir-senha.html */
