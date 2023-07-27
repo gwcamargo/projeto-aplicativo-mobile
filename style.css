@@ -378,7 +378,7 @@ header > h1 {
 
 /* estilização da redefinir-senha.html */
 
-.redefinir-senha {
+#redefinir-senha {
     border: none;
     border-bottom: 1px solid blue;
     width: 25rem;
