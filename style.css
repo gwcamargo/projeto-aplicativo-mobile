@@ -13,7 +13,7 @@ header {
 }
 
 header > h1 {
-    padding: 15px;
+    padding: 10px;
 }
 
 .campo-senha {
@@ -364,6 +364,18 @@ header > h1 {
     position: relative;
 }
 
+.header-tela-principal {
+    display: block;
+    flex-direction: column;
+}
+
+.header-tela-principal .material-symbols-outlined {
+    margin-left: 80rem;
+    display: inline-block;
+    width: 0.5px;
+    text-align:center;
+}
+
 /* estilização da redefinir-senha.html */
 
 #redefinir-senha {
@@ -399,6 +411,7 @@ header > h1 {
 
     background: lightgray;
     width: 25rem;
+    transition-duration: 0.5s;
 }
 
 .btn-salvar-senha:hover {
