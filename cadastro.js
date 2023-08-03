@@ -110,3 +110,7 @@
             return false
         } 
     }
+
+    function btnRegistrar() {
+        window.location.href = "tela-principal.html"
+    }

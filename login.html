@@ -32,7 +32,7 @@
             </div>
 
             <div class="entrar">
-                <button type="submit" class="btn-entrar">ENTRAR</button>
+                <button type="submit" class="btn-entrar" onclick="btnEntrar()">ENTRAR</button>
             </div>
         </form>
         <!-- End criação do formulário -->
@@ -54,5 +54,20 @@
 
     <!-- Conteúdo JavaScript -->
     <script src="login.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-auth-compat.js"></script>    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
+            authDomain: "recicla-manduri.firebaseapp.com",
+            projectId: "recicla-manduri",
+            storageBucket: "recicla-manduri.appspot.com",
+            messagingSenderId: "207545198480",
+            appId: "1:207545198480:web:70ee198d67c84049353515",
+            measurementId: "G-T6EYPEYFHG"
+        }
+        
+        firebase.initializeApp()
+    </script>
 </body>
 </html>
