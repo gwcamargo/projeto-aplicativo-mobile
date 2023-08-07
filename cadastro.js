@@ -1,4 +1,36 @@
 // validar campos da tela de cadastro (cadastro.html)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAuth, createInWithUser } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
+        authDomain: "recicla-manduri.firebaseapp.com",
+        projectId: "recicla-manduri",
+        storageBucket: "recicla-manduri.appspot.com",
+        messagingSenderId: "207545198480",
+        appId: "1:207545198480:web:70ee198d67c84049353515",
+        measurementId: "G-T6EYPEYFHG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Initialize Firebase
+    function criarUsuario(email, senha, nome, cpf, telefone, confirm_password, tipo_usuario){
+        const criarUsuario = createInWithUser(auth, email, senha, nome, cpf, telefone, confirm_password, tipo_usuario)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+            alert("Criado com sucesso!")
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            alert("OPS! Houve um erro!" + errorMessage)
+        });
+    }
 
     // pegar os elementos HTML em classes e id
     const form_cadastro = document.querySelector(".form-cadastro")
@@ -56,6 +88,8 @@
             alert("Sua senha é diferente!")
             return
         }
+
+        criarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
         
         // se todos os campos estiverem corretamente preenchidos, envie o form
         form_cadastro.submit()
