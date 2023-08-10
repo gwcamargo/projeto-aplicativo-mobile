@@ -1,8 +1,10 @@
 // validar campos da tela de login (index.html)
     // pegar os elementos HTML em classes e id
 
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -91,7 +93,5 @@
     }
 
     function btnEntrarConfig() {
-        window.location
-        console.log("### window", window)
-        console.log("### window.location", location)
+        window.location.href = "tela-principal.html"
     }

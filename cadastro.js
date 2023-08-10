@@ -1,6 +1,7 @@
 // validar campos da tela de cadastro (cadastro.html)
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getAuth, createInWithUser } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -16,8 +17,8 @@
     const auth = getAuth(app);
 
     // Initialize Firebase
-    function criarUsuario(email, senha, nome, cpf, telefone, confirm_password, tipo_usuario){
-        const criarUsuario = createInWithUser(auth, email, senha, nome, cpf, telefone, confirm_password, tipo_usuario)
+    function cadastrarUsuario(email, senha, nome, cpf, telefone, confirm_password, tipo_usuario){
+        const criarUsuario = signInWithEmailAndPassword(auth, email, senha, nome, cpf, telefone, confirm_password, tipo_usuario)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
@@ -89,7 +90,11 @@
             return
         }
 
-        criarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
+        btnRegistrar()
+
+        btnVoltar()
+
+        cadastrarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
         
         // se todos os campos estiverem corretamente preenchidos, envie o form
         form_cadastro.submit()
@@ -147,4 +152,8 @@
 
     function btnRegistrar() {
         window.location.href = "tela-principal.html"
+    }
+
+    function btnVoltar() {
+        window.location.href = "login.html"
     }
