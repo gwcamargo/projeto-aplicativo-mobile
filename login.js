@@ -59,8 +59,6 @@
         }
         
         autenticarUsuario(email.value, password.value)
-            
-        // form_login_submit(form_login)
 
         return false;   
     })

@@ -1,8 +1,15 @@
 // validar campos da tela de cadastro (cadastro.html)
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    // pegar os elementos HTML em classes e id
+
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-
+     
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+   
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
         apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
         authDomain: "recicla-manduri.firebaseapp.com",
@@ -15,10 +22,10 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
+   
     // Initialize Firebase
-    function cadastrarUsuario(email, senha, nome, cpf, telefone, confirm_password, tipo_usuario){
-        const criarUsuario = signInWithEmailAndPassword(auth, email, senha, nome, cpf, telefone, confirm_password, tipo_usuario)
+    function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario){
+        const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
@@ -31,7 +38,7 @@
             // ..
             alert("OPS! Houve um erro!" + errorMessage)
         });
-    }
+    }    
 
     // pegar os elementos HTML em classes e id
     const form_cadastro = document.querySelector(".form-cadastro")
@@ -90,14 +97,10 @@
             return
         }
 
-        btnRegistrar()
-
-        btnVoltar()
-
         cadastrarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
         
         // se todos os campos estiverem corretamente preenchidos, envie o form
-        form_cadastro.submit()
+        return false;
     })
 
     // função para validar email
