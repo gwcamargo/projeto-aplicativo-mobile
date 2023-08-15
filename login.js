@@ -1,4 +1,4 @@
-// validar campos da tela de login (index.html)
+// validar campos da tela de login (login.html)
     // pegar os elementos HTML em classes e id
 
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
@@ -23,8 +23,8 @@
     const auth = getAuth(app);
   
     // Initialize Firebase
-    function autenticarUsuario(email, senha){
-        const autenticarUsuario = signInWithEmailAndPassword(auth, email, senha)
+    function autenticarUsuario(email, password){
+        const autenticarUsuario = signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
@@ -57,6 +57,9 @@
             alert("A senha precisa ter no mínimo 8 dígitos")
             return
         }
+
+        console.log(email.value)
+        console.log(password.value)
         
         autenticarUsuario(email.value, password.value)
 
