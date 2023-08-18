@@ -37,7 +37,7 @@
             // ..
             alert("OPS! Houve um erro!" + errorMessage)
         });
-    }    
+    }
 
     const form_login = document.querySelector(".form-login")
     const email = document.querySelector("#email")
@@ -57,11 +57,11 @@
             alert("A senha precisa ter no mínimo 8 dígitos")
             return
         }
+        
+        autenticarUsuario(email.value, password.value)
 
         console.log(email.value)
         console.log(password.value)
-        
-        autenticarUsuario(email.value, password.value)
 
         return false;   
     })
