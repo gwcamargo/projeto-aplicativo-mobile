@@ -46,5 +46,3 @@ function getErrorMessage(error) {
     }
     return error.message
 }
-
-recoverPassword()
