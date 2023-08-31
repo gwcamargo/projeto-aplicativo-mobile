@@ -29,9 +29,22 @@ function recoverPassword() {
     showLoading()
     firebase.auth().sendPasswordResetEmail(input_email.value).then(() => {
         hideLoading()
-        alert("Email enviado sucesso!")
+        alert("Email enviado com sucesso!")
     }).catch(error => {
         hideLoading()
-        alert("Usuário não encontrado")
+        alert(getErrorMessage(error))
     })
 }
+
+function getErrorMessage(error) {
+    if (error.code == "auth/user-not-found") {
+        return "Usuário não encontrado"
+    }
+
+    if (error.code == "auth/wrong-password") {
+        return "Senha Inválida"
+    }
+    return error.message
+}
+
+recoverPassword()
