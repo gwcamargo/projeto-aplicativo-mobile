@@ -25,6 +25,10 @@ const btn_cancelar = document.querySelector(".btn-cancelar")
 const btn_recuperar = document.querySelector(".btn-recuperar")
 const form_email = document.querySelector(".insert-email")
 
+form_email.addEventListener("submit", (event) => {
+    event.preventDefault()
+})
+
 function recoverPassword() {
     showLoading()
     firebase.auth().sendPasswordResetEmail(input_email.value).then(() => {
