@@ -28,12 +28,12 @@ const form_email = document.querySelector(".insert-email")
 form_email.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    recoverPassword()
+    recoverPassword(input_email.value)
 })
 
 function recoverPassword(email) {
     const recoverPassword = sendPasswordResetEmail(auth, email).then((passwordEmail) => {
-        const passwordEmail = passwordEmail.user
+        const passwordEmail = passwordEmail.usert
         alert("Email enviado com sucesso!")
     }).catch((error) => {
         const errorCode = error.code
