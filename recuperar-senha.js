@@ -1,4 +1,4 @@
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
     
@@ -27,15 +27,16 @@ const form_email = document.querySelector(".insert-email")
 
 form_email.addEventListener("submit", (event) => {
     event.preventDefault()
+
+    recoverPassword()
 })
 
-function recoverPassword() {
-    showLoading()
-    firebase.auth().sendPasswordResetEmail(input_email.value).then(() => {
-        hideLoading()
+function recoverPassword(email) {
+    const recoverPassword = sendPasswordResetEmail(auth, email).then((passwordEmail) => {
+        const passwordEmail = passwordEmail.user
         alert("Email enviado com sucesso!")
-    }).catch(error => {
-        hideLoading()
+    }).catch((error) => {
+        const errorCode = error.code
         alert(getErrorMessage(error))
     })
 }
