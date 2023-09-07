@@ -33,7 +33,6 @@ form_email.addEventListener("submit", (event) => {
 
 function recoverPassword(email) {
     const recoverPassword = sendPasswordResetEmail(auth, email).then((passwordEmail) => {
-        const passEmail = passwordEmail.user
         alert("Email enviado com sucesso!")
     }).catch((error) => {
         const errorCode = error.code

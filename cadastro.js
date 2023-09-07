@@ -160,3 +160,26 @@
     function btnVoltar() {
         window.location.href = "login.html"
     }
+
+    function salvarDadosUsuario() {
+        const user01 = {
+            cpf: () => cpf,
+            email: () => email,
+            nome_completo: () => nome,
+            senha: () => senha,
+            telefone: () => telefone,
+            tipo_usuario: () => tipo_usuario
+        }
+
+        firebase.firestore()
+            .collection("user01")
+            .add(user01)
+            .then(() => {
+                window.location.href = "tela-principal.html"
+            })
+            .catch(() => {
+                alert("Erro ao salvar usuário")
+            })
+    }
+
+    
