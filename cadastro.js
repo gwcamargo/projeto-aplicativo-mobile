@@ -4,6 +4,9 @@
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+    import { initializeApp } from "firebase/app";
+    import { getFirestore } from "firebase/firestore";
      
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -57,7 +60,20 @@
             // ..
             alert("OPS! Houve um erro!" + errorMessage)
         });
-    }    
+    }
+    
+    // TODO: Replace the following with your app's Firebase project configuration
+    // See: https://support.google.com/firebase/answer/7015592
+    const firebaseCon = {
+        FIREBASE_CONFIGURATION
+    };
+
+    // Initialize Firebase
+    const aplication = initializeApp(firebaseCon);
+
+
+    // Initialize Cloud Firestore and get a reference to the service
+    const db = getFirestore(aplication);
 
     // pegar os elementos HTML em classes e id
     const form_cadastro = document.querySelector(".form-cadastro")
