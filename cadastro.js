@@ -5,8 +5,7 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js";
      
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -64,8 +63,15 @@
     
     // TODO: Replace the following with your app's Firebase project configuration
     // See: https://support.google.com/firebase/answer/7015592
+    
     const firebaseCon = {
-        FIREBASE_CONFIGURATION
+        apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
+        authDomain: "recicla-manduri.firebaseapp.com",
+        projectId: "recicla-manduri",
+        storageBucket: "recicla-manduri.appspot.com",
+        messagingSenderId: "207545198480",
+        appId: "1:207545198480:web:70ee198d67c84049353515",
+        measurementId: "G-T6EYPEYFHG"
     };
 
     // Initialize Firebase
