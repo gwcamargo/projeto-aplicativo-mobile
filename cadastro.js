@@ -5,7 +5,7 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js";
+    import { getFirestore } from "firebase-admin/firestore";
      
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -63,6 +63,13 @@
     
     // TODO: Replace the following with your app's Firebase project configuration
     // See: https://support.google.com/firebase/answer/7015592
+
+    const { applicationDefault, cert } = require('firebase-admin/app');
+    const { Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
+
+    initializeApp({
+        credential: applicationDefault()
+    });      
     
     const firebaseCon = {
         apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
