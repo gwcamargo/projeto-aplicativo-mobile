@@ -98,16 +98,19 @@
     form_cadastro.addEventListener("submit", (event) => {
         event.preventDefault()
 
+    
+        console.log(cpf.value)
         addDoc(collectionUsers, {
-            cpf: () => cpf,
-            email: () => email,
-            nome_completo: () => nome,
-            senha: () => senha,
-            telefone: () => telefone,
-            tipo_usuario: () => tipo_usuario
+            cpf: () => cpf.value,
+            email: () => email.value,
+            nome_completo: () => nome.value,
+            senha: () => senha.value,
+            telefone: () => telefone.value,
+            tipo_usuario: () => tipo_usuario.value
         })
         .then((doc) => console.log("Documento criado com o ID", doc.id))
         .catch(console.log)
+
 
         // verificar se o nome está vazio
         if (nome.value === "") {
