@@ -5,7 +5,7 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-    import { getFirestore } from "firebase-admin/firestore";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
      
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -60,16 +60,21 @@
             alert("OPS! Houve um erro!" + errorMessage)
         });
     }
+
+    // pegar os elementos HTML em classes e id
+    const form_cadastro = document.querySelector(".form-cadastro")
+    const nome = document.querySelector("#nome")
+    const email = document.querySelector("#iemail")
+
+    const telefone = document.querySelector("#telefone")
+    const cpf = document.querySelector("#cpf")
+    const senha = document.querySelector("#isenha")
     
+    const confirm_password = document.querySelector("#confirmar-senha")
+    const tipo_usuario = document.querySelector("#tipo-usuario")
+
     // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://support.google.com/firebase/answer/7015592
-
-    const { applicationDefault, cert } = require('firebase-admin/app');
-    const { Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
-
-    initializeApp({
-        credential: applicationDefault()
-    });      
+    // See: https://support.google.com/firebase/answer/7015592      
     
     const firebaseCon = {
         apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -88,20 +93,21 @@
     // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(aplication);
 
-    // pegar os elementos HTML em classes e id
-    const form_cadastro = document.querySelector(".form-cadastro")
-    const nome = document.querySelector("#nome")
-    const email = document.querySelector("#iemail")
-
-    const telefone = document.querySelector("#telefone")
-    const cpf = document.querySelector("#cpf")
-    const senha = document.querySelector("#isenha")
-    
-    const confirm_password = document.querySelector("#confirmar-senha")
-    const tipo_usuario = document.querySelector("#tipo-usuario")
+    const collectionUsers = collection(db, "users")
 
     form_cadastro.addEventListener("submit", (event) => {
         event.preventDefault()
+
+        addDoc(collectionUsers, {
+            cpf: () => cpf,
+            email: () => email,
+            nome_completo: () => nome,
+            senha: () => senha,
+            telefone: () => telefone,
+            tipo_usuario: () => tipo_usuario
+        })
+        .then((doc) => console.log("Documento criado com o ID", doc.id))
+        .catch(console.log)
 
         // verificar se o nome está vazio
         if (nome.value === "") {
@@ -208,3 +214,5 @@
     function btnVoltar() {
         window.location.href = "login.html"
     }
+
+    
