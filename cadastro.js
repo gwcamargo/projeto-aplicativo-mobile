@@ -30,26 +30,7 @@
         const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
-
-            const user01 = {
-                cpf: () => cpf,
-                email: () => email,
-                nome_completo: () => nome,
-                senha: () => senha,
-                telefone: () => telefone,
-                tipo_usuario: () => tipo_usuario
-            }
-    
-            firebase.firestore()
-                .collection("user01")
-                .add(user01)
-                .then(() => {
-                    window.location.href = "tela-principal.html"
-                })
-                .catch(() => {
-                    alert("Erro ao salvar usuário")
-                })
+            const user = userCredential.user;  
             
             alert("Criado com sucesso!")
         })
@@ -151,7 +132,17 @@
             telefone: () => telefone.value,
             tipo_usuario: () => tipo_usuario.value
         })
-        .then((doc) => console.log("Documento criado com o ID", doc.id))
+        .then((doc) => console.log("Documento criado com o ID", doc.id),
+            firebase.firestore()
+            .collection("user01")
+            .add(user01)
+            .then(() => {
+                window.location.href = "tela-principal.html"
+            })
+            .catch(() => {
+                alert("Erro ao salvar usuário")
+            })
+        )
         .catch(console.log)
         
         // se todos os campos estiverem corretamente preenchidos, envie o form
