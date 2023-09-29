@@ -30,7 +30,7 @@
         const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;  
+            const user = userCredential.user; 
             
             alert("Criado com sucesso!")
         })
@@ -69,7 +69,6 @@
 
     // Initialize Firebase
     const aplication = initializeApp(firebaseConfiguration);
-
 
     // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(aplication);
@@ -123,7 +122,7 @@
         }
 
         cadastrarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
-
+        
         addDoc(collectionUsers, {
             cpf: () => cpf.value,
             email: () => email.value,
@@ -133,15 +132,7 @@
             tipo_usuario: () => tipo_usuario.value
         })
         .then((doc) => console.log("Documento criado com o ID", doc.id),
-            firebase.firestore()
-            .collection("user01")
-            .add(user01)
-            .then(() => {
-                window.location.href = "tela-principal.html"
-            })
-            .catch(() => {
-                alert("Erro ao salvar usuário")
-            })
+            
         )
         .catch(console.log)
         

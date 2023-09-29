@@ -1,0 +1,9 @@
+firebase.firestore()
+    .collection("user01")
+    .add(user01)
+    .then(() => {
+        window.location.href = "tela-principal.html"
+    })
+    .catch(() => {
+        alert("Erro ao salvar usuário")
+    })
