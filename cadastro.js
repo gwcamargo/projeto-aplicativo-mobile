@@ -76,7 +76,7 @@
     // TODO: Replace the following with your app's Firebase project configuration
     // See: https://support.google.com/firebase/answer/7015592      
     
-    const firebaseCon = {
+    const firebaseConfiguration = {
         apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
         authDomain: "recicla-manduri.firebaseapp.com",
         projectId: "recicla-manduri",
@@ -87,7 +87,7 @@
     };
 
     // Initialize Firebase
-    const aplication = initializeApp(firebaseCon);
+    const aplication = initializeApp(firebaseConfiguration);
 
 
     // Initialize Cloud Firestore and get a reference to the service
@@ -97,19 +97,6 @@
 
     form_cadastro.addEventListener("submit", (event) => {
         event.preventDefault()
-
-    
-        console.log(cpf.value)
-        addDoc(collectionUsers, {
-            cpf: () => cpf.value,
-            email: () => email.value,
-            nome_completo: () => nome.value,
-            senha: () => senha.value,
-            telefone: () => telefone.value,
-            tipo_usuario: () => tipo_usuario.value
-        })
-        .then((doc) => console.log("Documento criado com o ID", doc.id))
-        .catch(console.log)
 
 
         // verificar se o nome está vazio
@@ -155,6 +142,17 @@
         }
 
         cadastrarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
+
+        addDoc(collectionUsers, {
+            cpf: () => cpf.value,
+            email: () => email.value,
+            nome_completo: () => nome.value,
+            senha: () => senha.value,
+            telefone: () => telefone.value,
+            tipo_usuario: () => tipo_usuario.value
+        })
+        .then((doc) => console.log("Documento criado com o ID", doc.id))
+        .catch(console.log)
         
         // se todos os campos estiverem corretamente preenchidos, envie o form
         return false;
@@ -216,6 +214,4 @@
 
     function btnVoltar() {
         window.location.href = "login.html"
-    }
-
-    
+    } 
