@@ -6,7 +6,8 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
     import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-     
+    
+    
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
    
@@ -73,7 +74,6 @@
     // Initialize Cloud Firestore and get a reference to the service
     const db = getFirestore(aplication);
 
-    const collectionUsers = collection(db, "users")
 
     form_cadastro.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -99,10 +99,10 @@
 
         // verificar se o cpf está preenchido corretamente e se é válido
         if (cpf.value === "") {
-            alert("Por favor, insira seu CPF!")
+            alert("Por favor, insira seu cpf!")
             return
-        } else if (!isValidCPF(cpf.value)) {
-            alert("CPF inválido, tente novamente!")
+        } else if (!isValidcpf(cpf.value)) {
+            alert("cpf inválido, tente novamente!")
             return
         }
 
@@ -122,23 +122,32 @@
         }
 
         cadastrarUsuario(email.value, senha.value, nome.value, cpf.value, telefone.value, confirm_password.value, tipo_usuario.value)
+
         
-        addDoc(collectionUsers, {
-            cpf: () => cpf.value,
-            email: () => email.value,
-            nome_completo: () => nome.value,
-            senha: () => senha.value,
-            telefone: () => telefone.value,
-            tipo_usuario: () => tipo_usuario.value
+        addDoc(collection(db, 'user01'), {
+            CPF: parseInt(cpf.value),
+            email: email.value,
+            nome_completo: nome.value,
+            senha: parseInt(senha.value),
+            telefone: telefone.value,
+            tipo_usuario: tipo_usuario.value
         })
-        .then((doc) => console.log("Documento criado com o ID", doc.id),
-            
+        .then(
+            (doc) => console.log("Documento criado com o ID", doc.id)
         )
         .catch(console.log)
-        
+
+        ExecuteFormCadastro()
+
         // se todos os campos estiverem corretamente preenchidos, envie o form
         return false;
     })
+
+    function ExecuteFormCadastro () {
+        if (form_cadastro) {
+            window.location.href = "login.html"
+        } 
+    }
 
     // função para validar email
     function validateEmail(email) {
@@ -168,10 +177,10 @@
         }
     }
 
-    // função para validar CPF
-    function isValidCPF(cpf) {
+    // função para validar cpf
+    function isValidcpf(cpf) {
         const cpfRegex = new RegExp(
-           /^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$/
+           /^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$/
         )
 
         if (cpfRegex.test(cpf)) {
@@ -188,12 +197,5 @@
         } else {
             return false
         } 
-    }
 
-    function btnRegistrar() {
-        window.location.href = "tela-principal.html"
     }
-
-    function btnVoltar() {
-        window.location.href = "login.html"
-    } 
