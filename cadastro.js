@@ -140,12 +140,12 @@
         ExecuteFormCadastro()
 
         // se todos os campos estiverem corretamente preenchidos, envie o form
-        return false;
     })
 
     function ExecuteFormCadastro () {
         if (form_cadastro) {
             window.location.href = "login.html"
+            return false;
         } 
     }
 

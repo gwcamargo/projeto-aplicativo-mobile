@@ -359,9 +359,27 @@ header > h1 {
     color: white;
 }
 
-.mapBox {
+.form-tela-principal {
     margin-top: 1rem;
     position: relative;
+}
+
+#endereço {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    width: 25rem;
+}
+
+.input-type-of-trash {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.checkbox-type-of-trash {
+    margin-top: 1rem;
+    gap: 1rem;
 }
 
 .header-tela-principal {
