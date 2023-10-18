@@ -382,6 +382,19 @@ header > h1 {
     gap: 1rem;
 }
 
+.input-house-number {
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#house-number {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 7.5rem;
+    height: 30px;
+}
+
 .header-tela-principal {
     display: block;
     flex-direction: column;
