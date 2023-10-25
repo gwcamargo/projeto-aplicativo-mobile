@@ -1,3 +1,7 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
 const address = document.querySelector("#endereço")
 const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
@@ -7,6 +11,22 @@ const tipoLixoOrganico = document.querySelector("#tipo-lixo-organico")
 const tipoLixoPublico = document.querySelector("#tipo-lixo-publico")
 
 const tipoLixoComercial = document.querySelector("#tipo-lixo-comercial")
+
+const firebaseConfiguration = {
+    apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
+    authDomain: "recicla-manduri.firebaseapp.com",
+    projectId: "recicla-manduri",
+    storageBucket: "recicla-manduri.appspot.com",
+    messagingSenderId: "207545198480",
+    appId: "1:207545198480:web:70ee198d67c84049353515",
+    measurementId: "G-T6EYPEYFHG"
+};
+
+// Initialize Firebase
+const aplication = initializeApp(firebaseConfiguration);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(aplication);
 
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
@@ -21,6 +41,15 @@ btnSaveLocation.addEventListener("click", (event) => {
         alert("Por favor, informe o número de sua casa!")
         return
     }
+
+    addDoc(collection(db, 'localização do morador'), {
+        address: address.value,
+        houseNumber: parseInt(houseNumber.value)
+    })
+    .then(
+        (doc) => console.log("Localização salva", doc.id)
+    )
+    .catch(console.log)
 })
 
 function validateHouseNumber(houseNumber) {
