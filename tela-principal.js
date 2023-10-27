@@ -1,3 +1,5 @@
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
@@ -24,6 +26,14 @@ const firebaseConfiguration = {
 
 // Initialize Firebase
 const aplication = initializeApp(firebaseConfiguration);
+const auth = getAuth(aplication)
+
+auth.onAuthStateChanged((user) => {
+    if (!user) {
+        window.location.href = "login.html"
+    }
+    
+})
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(aplication);
@@ -43,11 +53,12 @@ btnSaveLocation.addEventListener("click", (event) => {
     }
 
     addDoc(collection(db, 'localização do morador'), {
+        uid: auth.currentUser.uid,
         address: address.value,
         houseNumber: parseInt(houseNumber.value)
     })
     .then(
-        (doc) => console.log("Localização salva", doc.id)
+        (doc) => alert("Localização salva", doc.id)
     )
     .catch(console.log)
 })

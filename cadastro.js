@@ -25,7 +25,7 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-   
+
     // Initialize Firebase
     function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario){
         const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)

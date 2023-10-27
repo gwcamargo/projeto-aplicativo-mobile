@@ -372,6 +372,11 @@ header > h1 {
     width: 25rem;
 }
 
+.input-endereço {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
 .input-type-of-trash {
     margin-top: 1rem;
     gap: 1rem;
@@ -385,6 +390,14 @@ header > h1 {
 .input-house-number {
     gap: 1rem;
     margin-top: 1rem;
+}
+
+#email {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    width: 25rem;
+    height: 30px;
 }
 
 #house-number {
