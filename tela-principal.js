@@ -8,11 +8,7 @@ const address = document.querySelector("#endereço")
 const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
 
-const tipoLixoReciclavel = document.querySelector("#tipo-lixo-reciclavel")
-const tipoLixoOrganico = document.querySelector("#tipo-lixo-organico")
-const tipoLixoPublico = document.querySelector("#tipo-lixo-publico")
-
-const tipoLixoComercial = document.querySelector("#tipo-lixo-comercial")
+const tipoLixoCheckbox = document.querySelectorAll(".trash-checkbox")
 
 const firebaseConfiguration = {
     apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -47,30 +43,23 @@ btnSaveLocation.addEventListener("click", (event) => {
         return
     }
 
-    if (houseNumber.value === "" || !validateHouseNumber(houseNumber.value)) {
+    if (houseNumber.value === "") {
         alert("Por favor, informe o número de sua casa!")
         return
+    }
+
+    if (tipoLixoCheckbox.value) {
+        alert("Marque o tipo do lixo")
     }
 
     addDoc(collection(db, 'localização do morador'), {
         uid: auth.currentUser.uid,
         address: address.value,
-        houseNumber: parseInt(houseNumber.value)
+        houseNumber: parseInt(houseNumber.value),
+        tipoLixo: tipoLixoCheckbox.value
     })
     .then(
         (doc) => alert("Localização salva", doc.id)
     )
     .catch(console.log)
 })
-
-function validateHouseNumber(houseNumber) {
-    const HouseNumberRegex = RegExp(
-        /^[0-9]{4}$/
-    )
-
-    if (HouseNumberRegex.test(houseNumber)) {
-        return true
-    } else {
-        return false
-    }
-}
