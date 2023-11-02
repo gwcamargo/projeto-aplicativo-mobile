@@ -8,7 +8,7 @@ const address = document.querySelector("#endereço")
 const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
 
-const tipoLixoCheckbox = document.querySelectorAll(".trash-checkbox")
+const tipoLixoCheckbox = document.querySelector("#tipo-lixo")
 
 const firebaseConfiguration = {
     apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -50,9 +50,8 @@ btnSaveLocation.addEventListener("click", (event) => {
 
     if (tipoLixoCheckbox.value) {
         alert("Marque o tipo do lixo")
+        console.log(tipoLixoCheckbox)
     }
-
-    console.log(tipoLixoCheckbox)
 
     addDoc(collection(db, 'localização do morador'), {
         uid: auth.currentUser.uid,
