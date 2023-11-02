@@ -52,6 +52,8 @@ btnSaveLocation.addEventListener("click", (event) => {
         alert("Marque o tipo do lixo")
     }
 
+    console.log(tipoLixoCheckbox)
+
     addDoc(collection(db, 'localização do morador'), {
         uid: auth.currentUser.uid,
         address: address.value,
