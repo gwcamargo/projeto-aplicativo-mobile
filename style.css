@@ -382,7 +382,22 @@ header > h1 {
     gap: 1rem;
 }
 
+.location-table {
+    margin-top: 3rem;
+}
 
+.data-table {
+    border: 1px solid black;
+}
+
+th {
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+
+td {
+    border-bottom: 1px solid black;
+}
 
 .checkbox-type-of-trash {
     margin-top: 1rem;

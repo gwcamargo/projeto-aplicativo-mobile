@@ -48,6 +48,8 @@ btnSaveLocation.addEventListener("click", (event) => {
         return
     }
 
+    alert(tipoLixoCheckbox.value)
+
     if (tipoLixoCheckbox.value) {
         alert("Marque o tipo do lixo")
         console.log(tipoLixoCheckbox)
