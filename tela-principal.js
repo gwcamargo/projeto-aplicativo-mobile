@@ -9,6 +9,7 @@ const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
 
 const tipoLixoCheckbox = document.querySelector("#tipo-lixo")
+const locationTable = document.querySelector(".location-table")
 
 const firebaseConfiguration = {
     apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -33,6 +34,8 @@ auth.onAuthStateChanged((user) => {
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(aplication);
+
+locationTable.getFirestore
 
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
@@ -65,4 +68,28 @@ btnSaveLocation.addEventListener("click", (event) => {
         (doc) => alert("Localização salva", doc.id)
     )
     .catch(console.log)
+
+    getDateAndHour()
 })
+
+// função para pegar data e hora atual
+function getDateAndHour() {
+    // Data
+    const date = new Date()
+    const dayweek = date.getDay()
+
+    const day = date.getDate()
+    const month = date.getMonth()
+    const year = date.getFullYear()
+
+    // Hora
+    const hour = date.getHours()
+    const minutes = date.getMinutes()
+    const seconds = date.getSeconds()
+
+    const monthArray = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+
+    const dayweekArray = new Array("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
+
+    document.write(dayweekArray[dayweek] + "," + day + "de" + monthArray[month] + "de" + year)
+}
