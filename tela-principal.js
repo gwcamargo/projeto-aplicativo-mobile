@@ -35,7 +35,15 @@ auth.onAuthStateChanged((user) => {
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(aplication);
 
-locationTable.getFirestore
+const dados = ""
+
+db.on('child_added', function(snapshot) {
+    const adicionado = snapshot.val()
+
+    dados = "<table>" + "<tr><td>"+adicionado+"</td></tr>"
+
+    locationTable.innerHTML = dados
+})
 
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
