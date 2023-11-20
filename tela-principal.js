@@ -2,14 +2,14 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDoc, doc, query, getDocs, where } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const address = document.querySelector("#endereço")
 const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
 
 const tipoLixoCheckbox = document.querySelector("#tipo-lixo")
-const locationTable = document.querySelector(".location-table")
+const locationTable = document.querySelector(".data-table")
 
 const firebaseConfiguration = {
     apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -26,24 +26,32 @@ const aplication = initializeApp(firebaseConfiguration);
 const auth = getAuth(aplication)
 
 auth.onAuthStateChanged((user) => {
-    if (!user) {
+    if (user===null) {
         window.location.href = "login.html"
+    }else{
+        carregaTabela()
     }
     
 })
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(aplication);
+async function carregaTabela(){
+    const db = getFirestore(aplication);
+    const localizacaoRef = collection(db, "localização do morador")
+    const q = query(localizacaoRef, where("uid", "==", auth.currentUser.uid))
+    const querySnapshot = await getDocs(q)
+    locationTable.innerHTML += "<table>"
+    querySnapshot.forEach((doc) => {
+        locationTable.innerHTML += "<tr><td>"+doc.data().address+"</td></tr>"
 
-const dados = ""
+        var row = locationTable.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
 
-db.on('child_added', function(snapshot) {
-    const adicionado = snapshot.val()
-
-    dados = "<table>" + "<tr><td>"+adicionado+"</td></tr>"
-
-    locationTable.innerHTML = dados
-})
+        cell1.innerHTML = doc.data().address;
+        cell2.innerHTML = doc.data().address;
+    })
+}
 
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
