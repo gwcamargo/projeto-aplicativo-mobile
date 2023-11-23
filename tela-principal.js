@@ -58,17 +58,6 @@ async function carregaTabela(){
         cell4.innerHTML = doc.data().data
         cell5.innerHTML = doc.data().hour
     })
-
-    addDoc(collection(db, 'localização do morador'), {
-        uid: auth.currentUser.uid,
-        address: address.value,
-        houseNumber: parseInt(houseNumber.value),
-        tipoLixo: tipoLixoCheckbox.value
-    })
-    .then(
-        (doc) => alert("Localização salva", doc.id)
-    )
-    .catch(console.log)
 }
 
 // função para pegar data e hora atual
@@ -93,6 +82,8 @@ function getDateAndHour() {
     document.write(dayweekArray[dayweek] + "," + day + "de" + monthArray[month] + "de" + year)
 }
 
+const db = getFirestore(aplication);
+
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
     console.log(address)
@@ -114,7 +105,16 @@ btnSaveLocation.addEventListener("click", (event) => {
         console.log(tipoLixoCheckbox)
     }
 
-
+    addDoc(collection(db, 'localização do morador'), {
+        uid: auth.currentUser.uid,
+        address: address.value,
+        houseNumber: parseInt(houseNumber.value),
+        tipoLixo: tipoLixoCheckbox.value
+    })
+    .then(
+        (doc) => alert("Localização salva", doc.id)
+    )
+    .catch(console.log)
     
 
     getDateAndHour()
