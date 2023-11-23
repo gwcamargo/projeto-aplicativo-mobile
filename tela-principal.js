@@ -28,7 +28,7 @@ const auth = getAuth(aplication)
 auth.onAuthStateChanged((user) => {
     if (user===null) {
         window.location.href = "login.html"
-    }else{
+    } else {
         carregaTabela()
     }
     
@@ -40,17 +40,57 @@ async function carregaTabela(){
     const localizacaoRef = collection(db, "localização do morador")
     const q = query(localizacaoRef, where("uid", "==", auth.currentUser.uid))
     const querySnapshot = await getDocs(q)
-    locationTable.innerHTML += "<table>"
-    querySnapshot.forEach((doc) => {
-        locationTable.innerHTML += "<tr><td>"+doc.data().address+"</td></tr>"
 
-        var row = locationTable.insertRow(0);
+    locationTable.innerHTML += "<table>"
+    locationTable.innerHTML += "<thead><th>endereço</th> <th>número da casa</th> <th>tipo de lixo</th> <th>data</th> <th>hora</th></thead>"
+    querySnapshot.forEach((doc) => {
+
+        var row = locationTable.insertRow(1);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2)
+        var cell4 = row.insertCell(3)
+        var cell5 = row.insertCell(4)
 
         cell1.innerHTML = doc.data().address;
-        cell2.innerHTML = doc.data().address;
+        cell2.innerHTML = doc.data().houseNumber;
+        cell3.innerHTML = doc.data().tipoLixo
+        cell4.innerHTML = doc.data().data
+        cell5.innerHTML = doc.data().hour
     })
+
+    addDoc(collection(db, 'localização do morador'), {
+        uid: auth.currentUser.uid,
+        address: address.value,
+        houseNumber: parseInt(houseNumber.value),
+        tipoLixo: tipoLixoCheckbox.value
+    })
+    .then(
+        (doc) => alert("Localização salva", doc.id)
+    )
+    .catch(console.log)
+}
+
+// função para pegar data e hora atual
+function getDateAndHour() {
+    // Data
+    const date = new Date()
+    const dayweek = date.getDay()
+
+    const day = date.getDate()
+    const month = date.getMonth()
+    const year = date.getFullYear()
+
+    // Hora
+    const hour = date.getHours()
+    const minutes = date.getMinutes()
+    const seconds = date.getSeconds()
+
+    const monthArray = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
+
+    const dayweekArray = new Array("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
+
+    document.write(dayweekArray[dayweek] + "," + day + "de" + monthArray[month] + "de" + year)
 }
 
 btnSaveLocation.addEventListener("click", (event) => {
@@ -74,38 +114,8 @@ btnSaveLocation.addEventListener("click", (event) => {
         console.log(tipoLixoCheckbox)
     }
 
-    addDoc(collection(db, 'localização do morador'), {
-        uid: auth.currentUser.uid,
-        address: address.value,
-        houseNumber: parseInt(houseNumber.value),
-        tipoLixo: tipoLixoCheckbox.value
-    })
-    .then(
-        (doc) => alert("Localização salva", doc.id)
-    )
-    .catch(console.log)
+
+    
 
     getDateAndHour()
 })
-
-// função para pegar data e hora atual
-function getDateAndHour() {
-    // Data
-    const date = new Date()
-    const dayweek = date.getDay()
-
-    const day = date.getDate()
-    const month = date.getMonth()
-    const year = date.getFullYear()
-
-    // Hora
-    const hour = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-
-    const monthArray = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
-
-    const dayweekArray = new Array("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
-
-    document.write(dayweekArray[dayweek] + "," + day + "de" + monthArray[month] + "de" + year)
-}
