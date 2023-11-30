@@ -50,7 +50,7 @@ async function carregaTabela(){
     const querySnapshot = await getDocs(q)
 
     locationTable.innerHTML += "<table>"
-    locationTable.innerHTML += "<thead><th>endereço</th> <th>número da casa</th> <th>tipo de lixo</th> <th>data</th><th>excluir</th></thead>"
+    
     querySnapshot.forEach((doc) => {
 
         var row = locationTable.insertRow();
@@ -63,7 +63,7 @@ async function carregaTabela(){
         cell0.innerHTML = doc.data().address
         cell1.innerHTML = doc.data().houseNumber
         cell2.innerHTML = doc.data().tipoLixo
-        cell3.innerHTML = doc.data().date.toLocaleString('pt-BR')
+        cell3.innerHTML = doc.data().date.toLocaleString()
         
         var bt = document.createElement("button")
         bt.id=doc.id
@@ -98,7 +98,7 @@ btnSaveLocation.addEventListener("click", (event) => {
         address: address.value,
         houseNumber: parseInt(houseNumber.value),
         tipoLixo: tipoLixoCheckbox.value,
-        date: new Date()
+        date: new Date() 
     })
     .then(
         (doc) => alert("Localização salva", doc.id)
