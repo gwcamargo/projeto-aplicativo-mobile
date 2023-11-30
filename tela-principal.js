@@ -63,7 +63,7 @@ async function carregaTabela(){
         cell0.innerHTML = doc.data().address
         cell1.innerHTML = doc.data().houseNumber
         cell2.innerHTML = doc.data().tipoLixo
-        cell3.innerHTML = doc.data().data
+        cell3.innerHTML = doc.data().date.toLocaleString('pt-BR')
         
         var bt = document.createElement("button")
         bt.id=doc.id
