@@ -49,7 +49,7 @@ async function carregaTabela(){
     const q = query(localizacaoRef, where("uid", "==", auth.currentUser.uid))
     const querySnapshot = await getDocs(q)
 
-    locationTable.innerHTML += "<table>"
+    locationTable.innerHTML = "<table>"
     
     querySnapshot.forEach((doc) => {
 
@@ -59,20 +59,22 @@ async function carregaTabela(){
         var cell2 = row.insertCell(2)
         var cell3 = row.insertCell(3)
         var cell4 = row.insertCell(4)
+        var cell5 = row.insertCell(5)
 
         cell0.innerHTML = doc.data().address
         cell1.innerHTML = doc.data().houseNumber
         cell2.innerHTML = doc.data().tipoLixo
-        cell3.innerHTML = doc.data().date.toLocaleString()
+        cell3.innerHTML = doc.data().date.toDate()
+        cell4.innerHTML = doc.data().status
         
         var bt = document.createElement("button")
         bt.id=doc.id
         
         bt.innerHTML="EXCLUIR"
-        cell4.appendChild(bt)
+        cell5.appendChild(bt)
         bt.onclick = function(){
             excluirDados(doc.id)
-            locationTable.deleteRow(cell4.parentNode.rowIndex)
+            carregaTabela()
         }
     })
 }
@@ -92,16 +94,21 @@ btnSaveLocation.addEventListener("click", (event) => {
         alert("Por favor, informe o número de sua casa!")
         return
     }
+    
 
     addDoc(collection(db, 'localização do morador'), {
         uid: auth.currentUser.uid,
         address: address.value,
         houseNumber: parseInt(houseNumber.value),
         tipoLixo: tipoLixoCheckbox.value,
-        date: new Date() 
+        date: new Date(),
+        status: 'PENDENTE' 
     })
     .then(
         (doc) => alert("Localização salva", doc.id)
+        
+        
     )
     .catch(console.log)
+    carregaTabela()
 })
