@@ -83,7 +83,6 @@ const db = getFirestore(aplication);
 
 btnSaveLocation.addEventListener("click", (event) => {
     event.preventDefault()
-    console.log(address)
 
     if (address.value === "") {
         alert("Por favor, informe seu endereço!")

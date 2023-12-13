@@ -24,7 +24,7 @@ const auth = getAuth(app);
 
 auth.onAuthStateChanged((user) => {
     if (user) {
-        window.location.href = "tela-principal.html";
+        window.location.href = "tela-morador.html"
     }
 
 })

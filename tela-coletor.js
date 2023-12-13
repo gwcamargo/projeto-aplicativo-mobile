@@ -24,10 +24,29 @@ auth.onAuthStateChanged((user) => {
     if (user===null) {
         window.location.href = "login.html"
     } else {
-        carregarTabela()
-    }
-    
+        console.log(user)
+        if (validaColetor(user)){
+            carregarTabela()
+        } else {
+            alert("Usuario não permitido")
+        }
+    }    
 })
+
+async function validaColetor() {
+    const db = getFirestore(aplication);
+    const valColetorRef = collection(db, "user_attributes")
+    const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach((tipo_usuario) => {
+        if (tipo_usuario === "coletor") {
+            return true
+        } else {
+            return false
+        }
+    })
+}
 
 async function carregarTabela(){
     const db = getFirestore(aplication);
