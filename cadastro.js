@@ -39,8 +39,6 @@ const senha = document.querySelector("#isenha")
 const confirm_password = document.querySelector("#confirmar-senha")
 const tipo_usuario = document.querySelector("#tipo-usuario")
 
-
-// Initialize Firebase
 function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario) {
     const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
         .then((userCredential) => {
@@ -58,9 +56,7 @@ function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, t
                 (doc) => console.log("Documento criado com o ID", doc.id)
             )
             .catch(console.log)
-            
             alert("Criado com sucesso!")
-            console.log(addDoc)
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -131,7 +127,6 @@ form_cadastro.addEventListener("submit", (event) => {
             tipo_usuario.value);
         ExecuteFormCadastro();
     }
-
 })
 
 function ExecuteFormCadastro() {

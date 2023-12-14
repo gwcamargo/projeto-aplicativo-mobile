@@ -23,14 +23,11 @@ const auth = getAuth(aplication)
 auth.onAuthStateChanged((user) => {
     if (user===null) {
         window.location.href = "login.html"
+    } else if (validaColetor(user)) { 
+        carregarTabela()
     } else {
-        console.log(user)
-        if (validaColetor(user)){
-            carregarTabela()
-        } else {
-            alert("Usuario não permitido")
-        }
-    }    
+        alert("Usuario não permitido!")
+    }   
 })
 
 async function validaColetor() {
@@ -39,8 +36,8 @@ async function validaColetor() {
     const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
     const querySnapshot = await getDocs(q)
 
-    querySnapshot.forEach((tipo_usuario) => {
-        if (tipo_usuario === "coletor") {
+    querySnapshot.forEach((user) => {
+        if (user === "coletor") {
             return true
         } else {
             return false
