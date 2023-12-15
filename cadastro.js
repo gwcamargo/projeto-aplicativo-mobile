@@ -39,23 +39,12 @@ const senha = document.querySelector("#isenha")
 const confirm_password = document.querySelector("#confirmar-senha")
 const tipo_usuario = document.querySelector("#tipo-usuario")
 
-function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario) {
+async function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario) {
     const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
 
-            addDoc(collection(db, 'user_attributes'), {
-                CPF: parseInt(cpf.value),
-                nome_completo: nome.value,
-                telefone: telefone.value,
-                tipo_usuario: tipo_usuario.value,
-                uid: user.uid
-            })
-            .then(
-                (doc) => console.log("Documento criado com o ID", doc.id)
-            )
-            .catch(console.log)
             alert("Criado com sucesso!")
         })
         .catch((error) => {
@@ -64,7 +53,20 @@ function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, t
             // ..
             alert("OPS! Houve um erro!" + errorMessage)
         });
+        
 }
+
+addDoc(collection(db, 'user_attributes'), {
+    CPF: parseInt(cpf.value),
+    nome_completo: nome.value,
+    telefone: telefone.value,
+    tipo_usuario: tipo_usuario.value,
+    uid: user.uid
+})
+.then(
+    (doc) => console.log("Documento criado com o ID", doc.id)
+)
+.catch(console.log)
 
 
 function validaUsuario() {

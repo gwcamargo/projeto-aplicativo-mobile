@@ -30,7 +30,7 @@ auth.onAuthStateChanged((user) => {
     }   
 })
 
-async function validaColetor() {
+async function validaColetor(user) {
     const db = getFirestore(aplication);
     const valColetorRef = collection(db, "user_attributes")
     const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
