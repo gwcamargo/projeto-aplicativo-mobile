@@ -39,13 +39,26 @@ const senha = document.querySelector("#isenha")
 const confirm_password = document.querySelector("#confirmar-senha")
 const tipo_usuario = document.querySelector("#tipo-usuario")
 
-async function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_password, tipo_usuario) {
-    const criarUsuario = createUserWithEmailAndPassword(auth, email, senha, nome, telefone, cpf, confirm_password, tipo_usuario)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
+async function cadastrarUserAttributes(user){
+    await addDoc(collection(db, 'user_attributes'), {
+        cpf: parseInt(cpf.value),
+        nome_completo: nome.value,
+        telefone: telefone.value,
+        tipo_usuario: tipo_usuario.value,
+        uid: user.user.uid
+    })
+        .then(
+            (doc) => alert("Documento criado com o ID", doc.id)
+        )
+        .catch((error)=>alert(error))
+}
 
-            alert("Criado com sucesso!")
+async function cadastrarUsuario(email, senha, nome, cpf, telefone, confirm_password, tipo_usuario) {
+
+
+    await createUserWithEmailAndPassword(auth, email, senha)
+        .then(async (user)=>{
+            await cadastrarUserAttributes(user)
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -53,20 +66,8 @@ async function cadastrarUsuario(email, senha, nome, telefone, cpf, confirm_passw
             // ..
             alert("OPS! Houve um erro!" + errorMessage)
         });
-        
 }
 
-addDoc(collection(db, 'user_attributes'), {
-    CPF: parseInt(cpf.value),
-    nome_completo: nome.value,
-    telefone: telefone.value,
-    tipo_usuario: tipo_usuario.value,
-    uid: user.uid
-})
-.then(
-    (doc) => console.log("Documento criado com o ID", doc.id)
-)
-.catch(console.log)
 
 
 function validaUsuario() {
@@ -116,10 +117,10 @@ function validaUsuario() {
 }
 
 
-form_cadastro.addEventListener("submit", (event) => {
+form_cadastro.addEventListener("submit", async (event) => {
     event.preventDefault()
     if (validaUsuario()) {
-        cadastrarUsuario(
+        await cadastrarUsuario(
             email.value,
             senha.value,
             nome.value,

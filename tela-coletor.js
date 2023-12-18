@@ -27,7 +27,13 @@ auth.onAuthStateChanged((user) => {
         carregarTabela()
     } else {
         alert("Usuario não permitido!")
-    }   
+    }
+
+    if (user === "coletor de reciclaveis") {
+        window.location.href = "tela-coletor.html"
+    } else {
+        window.location.href = "tela-morador.html"
+    }
 })
 
 async function validaColetor(user) {
