@@ -25,14 +25,12 @@ auth.onAuthStateChanged((user) => {
         window.location.href = "login.html"
     } else if (validaColetor(user)) { 
         carregarTabela()
+    } else if (user === "coletor de reciclaveis"){
+        window.location.href = "tela-coletor.html"
+    } else if (user === "morador"){
+        window.location.href = "tela-morador.html"
     } else {
         alert("Usuario não permitido!")
-    }
-
-    if (user === "coletor de reciclaveis") {
-        window.location.href = "tela-coletor.html"
-    } else {
-        window.location.href = "tela-morador.html"
     }
 })
 
