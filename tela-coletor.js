@@ -23,14 +23,11 @@ const auth = getAuth(aplication)
 auth.onAuthStateChanged((user) => {
     if (user===null) {
         window.location.href = "login.html"
-    } else if (validaColetor(user)) { 
+    } else if (validaColetor(user)===true) { 
         carregarTabela()
-    } else if (user === "coletor de reciclaveis"){
-        window.location.href = "tela-coletor.html"
-    } else if (user === "morador"){
-        window.location.href = "tela-morador.html"
     } else {
         alert("Usuario não permitido!")
+        window.location.href = "tela-morador.html"
     }
 })
 
@@ -39,14 +36,8 @@ async function validaColetor(user) {
     const valColetorRef = collection(db, "user_attributes")
     const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
     const querySnapshot = await getDocs(q)
-
-    querySnapshot.forEach((user) => {
-        if (user === "coletor") {
-            return true
-        } else {
-            return false
-        }
-    })
+    var result = (querySnapshot.size > 0 && querySnapshot.docs[0].data().tipo_usuario ==='coletor')
+    return result;
 }
 
 async function carregarTabela(){
