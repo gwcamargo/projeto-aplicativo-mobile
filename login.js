@@ -23,11 +23,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 auth.onAuthStateChanged((user) => {
-    console.log(user)
     if (user) {
         window.location.href = "tela-morador.html"
     }
-
 })
 
 
