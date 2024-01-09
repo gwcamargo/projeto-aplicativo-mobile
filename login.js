@@ -1,9 +1,11 @@
 // validar campos da tela de login (login.html)
 // pegar os elementos HTML em classes e id
 
-import { setPersistence, getAuth, signInWithEmailAndPassword, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+import { setPersistence, getAuth, signInWithEmailAndPassword, signOut, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+import { btnLogout } from "./tela-morador"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,6 +25,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 auth.onAuthStateChanged((user) => {
+    const logout = () => {
+        try {
+            signOut(auth)
+            console.log("Usuario foi deslogado")
+            window.location.href = "login.html"
+        } catch (error) {
+            console.log("Erro: ", error)
+        }
+    }
+
+    btnLogout.addEventListener("click", logout)
+
     if (user) {
         window.location.href = "tela-morador.html"
     }

@@ -2,15 +2,15 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-import { getFirestore, collection, addDoc, getDoc, doc, query, getDocs, where, signOut, deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDoc, doc, query, getDocs, where,deleteDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
 const address = document.querySelector("#endereço")
 const houseNumber = document.querySelector("#house-number")
 const btnSaveLocation = document.querySelector("#btn-save-location")
 
 const tipoLixoCheckbox = document.querySelector("#tipo-lixo")
-const locationTable = document.querySelector(".data-table")
-const btnLogout = document.querySelector(".btn-logout")
+const locationTable = document.querySelector(".data-table") 
+export const btnLogout = document.querySelector(".btn-logout")
 
 const firebaseConfiguration = {
     apiKey: "AIzaSyBKkyrtfmk3FfWfU6icWxMYCk8O3awrJBY",
@@ -27,18 +27,6 @@ const aplication = initializeApp(firebaseConfiguration);
 const auth = getAuth(aplication)
 
 auth.onAuthStateChanged((user) => {
-    const logout = () => {
-        try {
-            signOut(auth)
-            console.log("Usuario foi deslogado")
-            window.location.href = "login.html"
-        } catch (error) {
-            console.log("Erro: ", error)
-        }
-    }
-
-    btnLogout.addEventListener("click", logout)
-
     if (user===null) {
         window.location.href = "login.html"
     } else {
