@@ -5,7 +5,6 @@ import { setPersistence, getAuth, signInWithEmailAndPassword, signOut, browserSe
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
-import { btnLogout } from "./tela-morador"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,28 +23,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-auth.onAuthStateChanged((user) => {
-    const logout = () => {
-        try {
-            signOut(auth)
-            console.log("Usuario foi deslogado")
-            window.location.href = "login.html"
-        } catch (error) {
-            console.log("Erro: ", error)
-        }
-    }
 
-    btnLogout.addEventListener("click", logout)
+
+
+auth.onAuthStateChanged((user) => {
 
     if (user) {
-        window.location.href = "tela-morador.html"
+        signOut(auth)
     }
 })
 
 
 // Initialize Firebase
 function autenticarUsuario(email, password) {
-    signInWithEmailAndPassword(auth, email, password).then((user) => { })
+    signInWithEmailAndPassword(auth, email, password).then((user) => {
+        if (validaColetor()) {
+            window.location.href = "tela-coletor.html"
+        } else {
+            window.location.href = "tela-morador.html"
+        }
+    })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -100,4 +97,13 @@ function validatePassword(password, minDigits) {
     } else {
         return false
     }
+}
+
+async function validaColetor() {
+    const db = getFirestore(aplication);
+    const valColetorRef = collection(db, "user_attributes")
+    const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
+    const querySnapshot = await getDocs(q)
+    var result = (querySnapshot.size > 0 && querySnapshot.docs[0].data().tipo_usuario === 'coletor')
+    return result;
 }

@@ -21,9 +21,9 @@ const aplication = initializeApp(firebaseConfiguration);
 const auth = getAuth(aplication)
 
 auth.onAuthStateChanged((user) => {
-    if (user===null) {
+    if (user === null) {
         window.location.href = "login.html"
-    } else if (validaColetor(user)===true) { 
+    } else if (validaColetor(user) === true) {
         carregarTabela()
     } else {
         alert("Usuario não permitido!")
@@ -36,18 +36,18 @@ async function validaColetor(user) {
     const valColetorRef = collection(db, "user_attributes")
     const q = query(valColetorRef, where("uid", "==", auth.currentUser.uid))
     const querySnapshot = await getDocs(q)
-    var result = (querySnapshot.size > 0 && querySnapshot.docs[0].data().tipo_usuario ==='coletor')
+    var result = (querySnapshot.size > 0 && querySnapshot.docs[0].data().tipo_usuario === 'coletor')
     return result;
 }
 
-async function carregarTabela(){
+async function carregarTabela() {
     const db = getFirestore(aplication);
     const localizacaoRef = collection(db, "localização do morador")
     const q = query(localizacaoRef)
     const querySnapshot = await getDocs(q)
 
     tableColetor.innerHTML = "<table>"
-    
+
     querySnapshot.forEach((doc) => {
 
         var row = tableColetor.insertRow();
@@ -63,14 +63,14 @@ async function carregarTabela(){
         cell2.innerHTML = doc.data().tipoLixo
         cell3.innerHTML = doc.data().date.toDate()
         cell4.innerHTML = doc.data().status
-        
-        
+
+
         var bt = document.createElement("button")
-        bt.id=doc.id
-        
-        bt.innerHTML="COLETA CONCLUIDA"
+        bt.id = doc.id
+
+        bt.innerHTML = "COLETA CONCLUIDA"
         cell5.appendChild(bt)
-        bt.onclick = function(){
+        bt.onclick = function () {
             concluirColeta(doc.id)
             carregarTabela()
         }
